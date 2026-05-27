@@ -1,4 +1,723 @@
+Here is an HTML document that presents Biznity as a clean, professional business platform for Nepal, featuring a refined layout and a prominent hero image of Nepali mountains and temples.
+```html
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Biznity | Nepal's #1 Business Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #D62828;
+      --primary-dark: #A4161A;
+      --primary-soft: #E63946;
+      --black: #0B0B0F;
+      --black-light: #14141C;
+      --gray-900: #1E1E2A;
+      --gray-700: #2D2D3A;
+      --gray-400: #9CA3AF;
+      --gray-300: #D1D5DB;
+      --white: #FFFFFF;
+      --glass-bg: rgba(20, 20, 28, 0.75);
+      --border-light: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* refined glassmorphism & containers */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(11, 11, 15, 0.65);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: white;
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    .badge {
+      background: rgba(214, 40, 40, 0.12);
+      border: 1px solid rgba(214, 40, 40, 0.3);
+      color: #F87171;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+
+    /* HERO section with high-end image background */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #050508 0%, #0B0B0F 100%);
+      overflow: hidden;
+    }
+
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      filter: brightness(0.7) contrast(1.1);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* custom SVG fallback overlay for atmosphere (gradient + mesh) */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 90%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      padding: 120px 24px 100px;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-chip .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1);}
+      50% { opacity: 0.5; transform: scale(0.9);}
+    }
+
+    h1 {
+      font-size: clamp(44px, 8vw, 82px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 30%, #D62828 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-devanagari {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 18px;
+      color: var(--gray-300);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--gray-400);
+      max-width: 560px;
+      margin: 0 auto 48px auto;
+      font-weight: 400;
+    }
+
+    /* DOWNLOAD CARD - clean, pro */
+    .download-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      padding: 8px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .btn-pro {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      box-shadow: 0 8px 20px rgba(214, 40, 40, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(214, 40, 40, 0.3);
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .btn-text-small {
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.7;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .btn-text-large {
+      font-size: 16px;
+      font-weight: 700;
+      display: block;
+      letter-spacing: -0.2px;
+    }
+
+    /* stat cards minimalist */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      background: rgba(20, 20, 28, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 80px;
+      padding: 16px 32px;
+      border: 1px solid var(--border-light);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-soft);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-400);
+    }
+
+    /* PREVIEW SECTION */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 17px;
+      max-width: 640px;
+      margin: 0 auto 48px auto;
+    }
+
+    .mockup-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-mock {
+      background: #111115;
+      border-radius: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 8px 16px 8px;
+      width: 280px;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .mock-screen {
+      background: #0C0C12;
+      border-radius: 36px;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .mock-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .mock-logo {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .search-bar {
+      background: rgba(255,255,255,0.05);
+      border-radius: 30px;
+      height: 36px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .list-item {
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .item-thumb {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(145deg, #2a2a35, #1a1a22);
+      border-radius: 14px;
+    }
+
+    /* features grid refined */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .feature-card {
+      background: var(--black-light);
+      border: 1px solid var(--border-light);
+      border-radius: 28px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(214, 40, 40, 0.4);
+      transform: translateY(-5px);
+      background: #181820;
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--gray-400);
+      line-height: 1.5;
+    }
+
+    .cta-modern {
+      background: linear-gradient(145deg, #14141C, #0B0B0F);
+      border-radius: 48px;
+      border: 1px solid rgba(214, 40, 40, 0.3);
+      padding: 64px 32px;
+      text-align: center;
+      margin: 40px 0 60px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 48px 32px 40px;
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 20px;
+      }
+      .stats-row {
+        border-radius: 48px;
+        gap: 16px;
+        padding: 12px 20px;
+      }
+      .download-card {
+        flex-direction: column;
+        width: 100%;
+        background: transparent;
+        backdrop-filter: none;
+        gap: 12px;
+      }
+      .btn-pro {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">B</div>
+      <span class="logo-text">Biz<span>nity</span></span>
+    </a>
+    <div class="badge">✨ Live in Nepal</div>
+  </div>
+</nav>
+
+<!-- Hero with premium mountain & temple imagery -->
+<section class="hero">
+  <!-- High-end scenic image: Nepal mountains + temple silhouette at dawn -->
+  <img class="hero-bg-image" src="https://images.pexels.com/photos/1496372/pexels-photo-1496372.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Nepal Himalayan range and temple" 
+       onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-chip">
+      <span class="live-dot"></span> Nepal's #1 Business Ecosystem
+    </div>
+    <h1>
+      <span class="gradient-text">Nepal ko Business,</span><br>
+      Aaba Haatma.
+    </h1>
+    <div class="hero-devanagari">नेपालको व्यापार संसार, अब तपाईंको मोबाइलमा</div>
+    <p class="hero-description">
+      Discover verified businesses, trending products, local jobs & events across all 77 districts — beautifully crafted for Nepal.
+    </p>
+
+    <div class="download-card">
+      <a href="biznity.apk" download="biznity.apk" class="btn-pro btn-primary" id="androidBtn">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 8.5L12 3L20 8.5M4 8.5L12 14M4 8.5V16.5L12 22M20 8.5L12 14M20 8.5V16.5L12 22M12 14V22" stroke="white" fill="none"/>
+            <path d="M8 12L12 14.5L16 12" stroke="white" fill="none"/>
+          </svg>
+        </div>
+        <div class="btn-text-group">
+          <span class="btn-text-small">GET IT ON</span>
+          <span class="btn-text-large">Android APK</span>
+        </div>
+      </a>
+      <a href="biznityios.apk" download="biznityios.apk" class="btn-pro btn-outline-light" id="iosBtn">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 12h8M12 8v8" stroke="white" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="9" stroke="white"/>
+          </svg>
+        </div>
+        <div class="btn-text-group">
+          <span class="btn-text-small">Download on the</span>
+          <span class="btn-text-large">App Store</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item"><span class="stat-number">14k+</span><div class="stat-label">Active Businesses</div></div>
+      <div class="stat-item"><span class="stat-number">77</span><div class="stat-label">Districts</div></div>
+      <div class="stat-item"><span class="stat-number">100%</span><div class="stat-label">Free Access</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Phone Preview Section - clean, minimal -->
+<div class="container">
+  <div class="section">
+    <div class="section-tag">Modern interface</div>
+    <h2 class="section-title">Designed for <span style="color: var(--primary);">Nepali users</span></h2>
+    <p class="section-sub">Seamless experience, fast search, and local-first features</p>
+
+    <div class="mockup-wrapper">
+      <div class="phone-mock">
+        <div class="mock-screen">
+          <div class="mock-header">
+            <span class="mock-logo" style="font-weight:800;">Biz<span style="color:#D62828;">nity</span></span>
+            <div style="width:30px; height:30px; background: rgba(214,40,40,0.2); border-radius: 20px;"></div>
+          </div>
+          <div class="search-bar">
+            <span>🔍</span><span style="flex:1; font-size:11px; opacity:0.5;">Search business, product...</span>
+          </div>
+          <div class="chip-row">
+            <span class="chip active">All</span><span class="chip">Products</span><span class="chip">Jobs</span><span class="chip">Events</span><span class="chip">Offers</span>
+          </div>
+          <div class="list-item">
+            <div class="item-thumb" style="background: linear-gradient(135deg, #b83b3b, #7a1f1f);"></div>
+            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">Himalayan Mart</div><div style="font-size:9px; opacity:0.6;">Kathmandu · Grocery</div></div>
+            <div style="font-size:9px; background: rgba(214,40,40,0.2); padding:2px 8px; border-radius:20px;">✓ verified</div>
+          </div>
+          <div class="list-item">
+            <div class="item-thumb" style="background: linear-gradient(145deg, #2b2b38, #1b1b26);"></div>
+            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">TechHub Nepal</div><div style="font-size:9px; opacity:0.6;">IT & Services · Pokhara</div></div>
+            <div style="font-size:9px; color:#F87171;">★ featured</div>
+          </div>
+          <div class="list-item">
+            <div class="item-thumb" style="background: linear-gradient(135deg, #2f5a3a, #1b3b22);"></div>
+            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">Organic Mart</div><div style="font-size:9px; opacity:0.6;">Butwal · Organic Products</div></div>
+            <div style="font-size:9px;">🔥 new</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features premium -->
+<div class="container">
+  <div class="section" style="padding-top: 20px;">
+    <div class="section-tag">Why Biznity</div>
+    <h2 class="section-title">Everything in one <span style="color: var(--primary);">powerful app</span></h2>
+    <p class="section-sub">Built for entrepreneurs, job seekers, and customers across Nepal</p>
+
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🏔️</div><div class="feature-title">All 77 Districts</div><div class="feature-desc">Complete coverage from Mechi to Mahakali — local businesses, local impact.</div></div>
+      <div class="feature-card"><div class="feature-icon">🛍️</div><div class="feature-title">Product Discovery</div><div class="feature-desc">Explore trending products, exclusive deals and local artisans in real-time.</div></div>
+      <div class="feature-card"><div class="feature-icon">💼</div><div class="feature-title">Job Hub</div><div class="feature-desc">Find thousands of verified job opportunities from Nepal's top companies.</div></div>
+      <div class="feature-card"><div class="feature-icon">📅</div><div class="feature-title">Local Events</div><div class="feature-desc">Business expos, workshops, networking — never miss an event near you.</div></div>
+      <div class="feature-card"><div class="feature-icon">🔐</div><div class="feature-title">Verified Listings</div><div class="feature-desc">Trust & transparency with verified badges and real reviews.</div></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-title">Lightning Fast</div><div class="feature-desc">Optimized for Nepali networks, light and blazing fast on any device.</div></div>
+    </div>
+  </div>
+
+  <!-- CTA section -->
+  <div class="cta-modern">
+    <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 16px;">Join 14,000+ businesses on Biznity</h3>
+    <p style="color: #9CA3AF; max-width: 520px; margin: 0 auto 32px auto;">Download the app now and explore Nepal's fastest growing business network</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="biznity.apk" download class="btn-pro btn-primary" style="background: var(--primary);">
+        <span>📱 Download for Android</span>
+      </a>
+      <a href="biznityios.apk" download class="btn-pro" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);">
+        <span>🍏 Download for iOS</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer>
+  <div style="margin-bottom: 20px;">
+    <span style="font-weight: 700; font-size: 18px;">Biznity<span style="color: var(--primary);">*</span></span>
+  </div>
+  <p style="margin-bottom: 12px;">Nepal's #1 Business Platform — bridging opportunities across the nation</p>
+  <p style="font-size: 13px;">© 2025 Biznity · <a href="#" style="color: var(--primary); text-decoration: none;">biznity.online</a> · Made with ❤️ in Nepal</p>
+</footer>
+
+<script>
+  (function() {
+    const androidBtn = document.getElementById('androidBtn');
+    const iosBtn = document.getElementById('iosBtn');
+    const ua = navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test(ua);
+    const isAndroid = /android/.test(ua);
+
+    if (isIOS) {
+      if (iosBtn) {
+        iosBtn.classList.add('btn-primary');
+        iosBtn.classList.remove('btn-outline-light');
+        iosBtn.style.background = "var(--primary)";
+        iosBtn.style.boxShadow = "0 8px 20px rgba(214,40,40,0.25)";
+        if(androidBtn) {
+          androidBtn.classList.remove('btn-primary');
+          androidBtn.classList.add('btn-outline-light');
+          androidBtn.style.background = "rgba(255,255,255,0.04)";
+        }
+      }
+    } else if (isAndroid) {
+      if (androidBtn) {
+        androidBtn.classList.add('btn-primary');
+        androidBtn.classList.remove('btn-outline-light');
+        androidBtn.style.background = "var(--primary)";
+        if(iosBtn) {
+          iosBtn.classList.remove('btn-primary');
+          iosBtn.style.background = "rgba(255,255,255,0.04)";
+        }
+      }
+    }
+
+    const downloadBtns = [androidBtn, iosBtn].filter(Boolean);
+    downloadBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const smallSpan = this.querySelector('.btn-text-small');
+        if (smallSpan) {
+          const originalText = smallSpan.innerText;
+          smallSpan.innerText = '✓ Starting download...';
+          setTimeout(() => {
+            smallSpan.innerText = originalText;
+          }, 2500);
+        }
+      });
+    });
+
+    // subtle fade-in on feature cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+      observer.observe(card);
+    });
+  })();
+</script>
+</body>
+</html>
+```<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
