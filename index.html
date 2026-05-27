@@ -1,14 +1,9 @@
-Here is an HTML document that presents Biznity as a clean, professional business platform for Nepal, featuring a refined layout and a prominent hero image of Nepali mountains and temples.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Biznity | Nepal's #1 Business Platform</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Biznity — Nepal's Business Network</title>
   <style>
     * {
       margin: 0;
@@ -17,158 +12,121 @@ Here is an HTML document that presents Biznity as a clean, professional business
     }
 
     :root {
-      --primary: #D62828;
-      --primary-dark: #A4161A;
-      --primary-soft: #E63946;
-      --black: #0B0B0F;
-      --black-light: #14141C;
-      --gray-900: #1E1E2A;
-      --gray-700: #2D2D3A;
-      --gray-400: #9CA3AF;
-      --gray-300: #D1D5DB;
       --white: #FFFFFF;
-      --glass-bg: rgba(20, 20, 28, 0.75);
-      --border-light: rgba(255, 255, 255, 0.08);
+      --black: #000000;
+      --black-soft: #0A0A0A;
+      --black-card: #111111;
+      --red: #E11D2C;
+      --red-dark: #B91C1C;
+      --red-glow: rgba(225, 29, 44, 0.25);
+      --border-white: rgba(255, 255, 255, 0.08);
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--black);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, 'Helvetica Neue', sans-serif;
+      background: var(--black);
       color: var(--white);
-      line-height: 1.5;
-      scroll-behavior: smooth;
+      line-height: 1.4;
+      overflow-x: hidden;
     }
 
-    /* refined glassmorphism & containers */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* navigation */
-    .navbar {
+    /* crisp background with subtle radial */
+    .bg {
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      backdrop-filter: blur(20px);
-      background: rgba(11, 11, 15, 0.65);
-      border-bottom: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 34px;
-      height: 34px;
-      background: var(--primary);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 20px;
-      color: white;
-      box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
-    }
-
-    .logo-text {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: white;
-    }
-
-    .logo-text span {
-      color: var(--primary);
-    }
-
-    .badge {
-      background: rgba(214, 40, 40, 0.12);
-      border: 1px solid rgba(214, 40, 40, 0.3);
-      color: #F87171;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 40px;
-      letter-spacing: 0.3px;
-    }
-
-    /* HERO section with high-end image background */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, #050508 0%, #0B0B0F 100%);
-      overflow: hidden;
-    }
-
-    .hero-bg-image {
-      position: absolute;
       inset: 0;
+      z-index: -2;
+      background: radial-gradient(ellipse at 30% 40%, #1A1A1A 0%, #000000 100%);
+    }
+
+    .bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.4;
-      filter: brightness(0.7) contrast(1.1);
-      z-index: 0;
+      background: repeating-linear-gradient(45deg, rgba(225,29,44,0.02) 0px, rgba(225,29,44,0.02) 2px, transparent 2px, transparent 8px);
       pointer-events: none;
     }
 
-    /* custom SVG fallback overlay for atmosphere (gradient + mesh) */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 90%);
-      z-index: 1;
-    }
-
-    .hero-content {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
       position: relative;
-      z-index: 10;
-      max-width: 900px;
-      padding: 120px 24px 100px;
+      z-index: 2;
     }
 
-    .hero-chip {
-      display: inline-flex;
+    /* navigation minimal */
+    .nav {
+      padding: 24px 32px;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 6px 18px;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-white);
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+      filter: drop-shadow(0 4px 12px rgba(225,29,44,0.3));
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(120deg, #FFF, #E11D2C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge-white {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(225,29,44,0.4);
+      padding: 6px 16px;
       border-radius: 100px;
       font-size: 13px;
       font-weight: 500;
-      margin-bottom: 32px;
-      letter-spacing: 0.3px;
+      color: var(--red);
     }
 
-    .hero-chip .live-dot {
+    /* hero section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(225,29,44,0.12);
+      border: 1px solid rgba(225,29,44,0.35);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
+      color: #FF6B6B;
+    }
+
+    .dot-live {
       width: 8px;
       height: 8px;
-      background: var(--primary);
+      background: var(--red);
       border-radius: 50%;
       display: inline-block;
       animation: pulse 1.8s infinite;
@@ -176,89 +134,98 @@ Here is an HTML document that presents Biznity as a clean, professional business
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1);}
-      50% { opacity: 0.5; transform: scale(0.9);}
+      50% { opacity: 0.4; transform: scale(0.85);}
     }
 
     h1 {
-      font-size: clamp(44px, 8vw, 82px);
-      font-weight: 800;
-      letter-spacing: -2px;
+      font-size: clamp(42px, 9vw, 80px);
+      font-weight: 900;
       line-height: 1.1;
+      letter-spacing: -2px;
       margin-bottom: 20px;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #FFFFFF 30%, #D62828 80%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .highlight {
+      color: var(--red);
+      text-shadow: 0 0 20px rgba(225,29,44,0.5);
     }
 
-    .hero-devanagari {
-      font-family: 'Noto Sans Devanagari', sans-serif;
+    .subhead {
       font-size: 18px;
-      color: var(--gray-300);
-      margin-bottom: 16px;
-      font-weight: 400;
-    }
-
-    .hero-description {
-      font-size: 18px;
-      color: var(--gray-400);
-      max-width: 560px;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
       margin: 0 auto 48px auto;
       font-weight: 400;
     }
 
-    /* DOWNLOAD CARD - clean, pro */
-    .download-card {
-      background: var(--glass-bg);
+    /* download card — clean glass */
+    .download-container {
+      background: rgba(17,17,17,0.7);
       backdrop-filter: blur(16px);
-      border: 1px solid var(--border-light);
-      border-radius: 40px;
-      padding: 8px;
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 48px;
+      border: 1px solid var(--border-white);
+      border-radius: 32px;
+      padding: 28px 32px;
+      max-width: 560px;
+      margin: 0 auto 56px auto;
+      transition: all 0.2s;
     }
 
-    .btn-pro {
+    .download-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      padding: 12px 28px;
+      padding: 16px 32px;
       border-radius: 60px;
       font-weight: 600;
-      transition: all 0.25s ease;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary {
-      background: var(--primary);
-      border: none;
-      box-shadow: 0 8px 20px rgba(214, 40, 40, 0.25);
+      background: var(--red);
+      color: white;
+      box-shadow: 0 8px 24px rgba(225,29,44,0.35);
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
+      background: var(--red-dark);
       transform: translateY(-3px);
-      box-shadow: 0 16px 28px rgba(214, 40, 40, 0.3);
+      box-shadow: 0 16px 28px rgba(225,29,44,0.45);
     }
 
-    .btn-outline-light:hover {
-      background: rgba(255, 255, 255, 0.1);
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(225,29,44,0.5);
       transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .btn-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
     }
 
     .btn-text-small {
@@ -270,95 +237,112 @@ Here is an HTML document that presents Biznity as a clean, professional business
     }
 
     .btn-text-large {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       display: block;
       letter-spacing: -0.2px;
     }
 
-    /* stat cards minimalist */
-    .stats-row {
+    /* stats minimal */
+    .stats {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 32px;
-      background: rgba(20, 20, 28, 0.5);
-      backdrop-filter: blur(12px);
-      border-radius: 80px;
-      padding: 16px 32px;
-      border: 1px solid var(--border-light);
-      max-width: 500px;
-      margin: 0 auto;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
 
-    .stat-item {
+    .stat {
       text-align: center;
-      padding: 0 16px;
     }
 
     .stat-number {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 800;
-      color: var(--primary-soft);
+      color: var(--red);
     }
 
     .stat-label {
       font-size: 13px;
+      color: rgba(255,255,255,0.5);
       font-weight: 500;
-      color: var(--gray-400);
     }
 
-    /* PREVIEW SECTION */
-    .section {
-      padding: 100px 0;
-    }
-
-    .section-tag {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 16px;
-      text-align: center;
+    /* feature grid clean */
+    .features {
+      padding: 80px 0 60px;
     }
 
     .section-title {
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: 32px;
       font-weight: 700;
       text-align: center;
-      letter-spacing: -1px;
       margin-bottom: 16px;
+      letter-spacing: -0.5px;
     }
 
     .section-sub {
       text-align: center;
-      color: var(--gray-400);
-      font-size: 17px;
-      max-width: 640px;
-      margin: 0 auto 48px auto;
+      color: rgba(255,255,255,0.5);
+      max-width: 560px;
+      margin: 0 auto 56px auto;
     }
 
-    .mockup-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
     }
 
-    .phone-mock {
-      background: #111115;
-      border-radius: 48px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 12px 8px 16px 8px;
-      width: 280px;
-      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8);
-      transition: transform 0.3s ease;
+    .card {
+      background: var(--black-card);
+      border: 1px solid var(--border-white);
+      border-radius: 28px;
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: rgba(225,29,44,0.4);
+      transform: translateY(-4px);
+      background: #161616;
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* phone mock simple */
+    .mock-section {
+      padding: 40px 0 80px;
+    }
+
+    .mock-phone {
+      max-width: 260px;
+      margin: 0 auto;
+      background: #0C0C0C;
+      border-radius: 44px;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 8px 16px;
+      box-shadow: 0 30px 40px -20px black;
     }
 
     .mock-screen {
-      background: #0C0C12;
-      border-radius: 36px;
+      background: #000;
+      border-radius: 32px;
       overflow: hidden;
       padding: 12px;
     }
@@ -367,336 +351,250 @@ Here is an HTML document that presents Biznity as a clean, professional business
       display: flex;
       justify-content: space-between;
       margin-bottom: 16px;
-      align-items: center;
     }
 
-    .mock-logo {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .search-bar {
-      background: rgba(255,255,255,0.05);
+    .mock-search {
+      background: rgba(255,255,255,0.06);
       border-radius: 30px;
       height: 36px;
       margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 8px;
     }
 
-    .chip-row {
+    .mock-chip-row {
       display: flex;
       gap: 8px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
-    .chip {
-      background: rgba(255,255,255,0.03);
-      border: 0.5px solid rgba(255,255,255,0.1);
-      border-radius: 40px;
-      padding: 4px 12px;
+    .mock-chip {
+      background: rgba(255,255,255,0.04);
+      border-radius: 30px;
       font-size: 10px;
-      font-weight: 500;
+      padding: 4px 12px;
     }
 
-    .chip.active {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .list-item {
+    .mock-item {
       background: rgba(255,255,255,0.02);
       border-radius: 16px;
-      padding: 10px;
-      margin-bottom: 10px;
+      padding: 8px;
+      margin-bottom: 8px;
       display: flex;
       gap: 12px;
-      border: 1px solid rgba(255,255,255,0.05);
     }
 
-    .item-thumb {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(145deg, #2a2a35, #1a1a22);
-      border-radius: 14px;
+    .mock-thumb {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(145deg, #2a2a2a, #111);
+      border-radius: 12px;
     }
 
-    /* features grid refined */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .feature-card {
-      background: var(--black-light);
-      border: 1px solid var(--border-light);
-      border-radius: 28px;
-      padding: 28px;
-      transition: all 0.25s;
-    }
-
-    .feature-card:hover {
-      border-color: rgba(214, 40, 40, 0.4);
-      transform: translateY(-5px);
-      background: #181820;
-    }
-
-    .feature-icon {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .feature-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .feature-desc {
-      font-size: 14px;
-      color: var(--gray-400);
-      line-height: 1.5;
-    }
-
-    .cta-modern {
-      background: linear-gradient(145deg, #14141C, #0B0B0F);
-      border-radius: 48px;
-      border: 1px solid rgba(214, 40, 40, 0.3);
-      padding: 64px 32px;
+    /* final CTA */
+    .cta-block {
+      background: linear-gradient(145deg, #0F0F0F, #050505);
+      border-radius: 40px;
+      border: 1px solid rgba(225,29,44,0.3);
+      padding: 56px 32px;
       text-align: center;
       margin: 40px 0 60px;
     }
 
     footer {
-      border-top: 1px solid var(--border-light);
-      padding: 48px 32px 40px;
       text-align: center;
-      color: var(--gray-400);
-      font-size: 14px;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border-white);
+      color: rgba(255,255,255,0.35);
+      font-size: 13px;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 640px) {
       .container {
         padding: 0 20px;
       }
-      .stats-row {
-        border-radius: 48px;
-        gap: 16px;
-        padding: 12px 20px;
-      }
-      .download-card {
+      .btn-group {
         flex-direction: column;
         width: 100%;
-        background: transparent;
-        backdrop-filter: none;
-        gap: 12px;
       }
-      .btn-pro {
+      .btn {
         justify-content: center;
+      }
+      .stats {
+        gap: 28px;
+      }
+      .download-container {
+        padding: 24px 20px;
+      }
+      .nav {
+        padding: 16px 20px;
+      }
+      .logo-img {
+        height: 36px;
       }
     }
   </style>
 </head>
 <body>
+<div class="bg"></div>
 
-<nav class="navbar">
-  <div class="nav-inner">
-    <a href="#" class="logo">
-      <div class="logo-mark">B</div>
-      <span class="logo-text">Biz<span>nity</span></span>
-    </a>
-    <div class="badge">✨ Live in Nepal</div>
+<nav class="nav">
+  <div class="logo-area">
+    <!-- local Logo.png -->
+    <img src="Logo.png" alt="Biznity" class="logo-img" onerror="this.onerror=null; this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
+    <div id="fallback-logo" style="display:none; width:44px; height:44px; background:#E11D2C; border-radius:12px; align-items:center; justify-content:center; font-weight:800; font-size:22px;">B</div>
+    <span class="logo-text">Biznity</span>
   </div>
+  <div class="badge-white">Official App</div>
 </nav>
 
-<!-- Hero with premium mountain & temple imagery -->
-<section class="hero">
-  <!-- High-end scenic image: Nepal mountains + temple silhouette at dawn -->
-  <img class="hero-bg-image" src="https://images.pexels.com/photos/1496372/pexels-photo-1496372.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Nepal Himalayan range and temple" 
-       onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80'">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-chip">
-      <span class="live-dot"></span> Nepal's #1 Business Ecosystem
+<main class="container">
+  <div class="hero">
+    <div class="chip">
+      <span class="dot-live"></span> NOW LIVE · NEPAL'S BUSINESS HUB
     </div>
     <h1>
-      <span class="gradient-text">Nepal ko Business,</span><br>
-      Aaba Haatma.
+      <span class="highlight">Biznity</span><br>
+      Business, in your pocket.
     </h1>
-    <div class="hero-devanagari">नेपालको व्यापार संसार, अब तपाईंको मोबाइलमा</div>
-    <p class="hero-description">
-      Discover verified businesses, trending products, local jobs & events across all 77 districts — beautifully crafted for Nepal.
+    <p class="subhead">
+      The fastest way to discover verified businesses, jobs & events across 77 districts of Nepal.
     </p>
 
-    <div class="download-card">
-      <a href="biznity.apk" download="biznity.apk" class="btn-pro btn-primary" id="androidBtn">
-        <div class="btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 8.5L12 3L20 8.5M4 8.5L12 14M4 8.5V16.5L12 22M20 8.5L12 14M20 8.5V16.5L12 22M12 14V22" stroke="white" fill="none"/>
-            <path d="M8 12L12 14.5L16 12" stroke="white" fill="none"/>
-          </svg>
-        </div>
-        <div class="btn-text-group">
-          <span class="btn-text-small">GET IT ON</span>
-          <span class="btn-text-large">Android APK</span>
-        </div>
-      </a>
-      <a href="biznityios.apk" download="biznityios.apk" class="btn-pro btn-outline-light" id="iosBtn">
-        <div class="btn-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 12h8M12 8v8" stroke="white" stroke-linecap="round"/>
-            <circle cx="12" cy="12" r="9" stroke="white"/>
-          </svg>
-        </div>
-        <div class="btn-text-group">
-          <span class="btn-text-small">Download on the</span>
-          <span class="btn-text-large">App Store</span>
-        </div>
-      </a>
+    <!-- DOWNLOAD CARD WITH APK -->
+    <div class="download-container">
+      <div class="download-title">⬇️ GET THE APP</div>
+      <div class="btn-group">
+        <a href="Biznity.apk" download id="androidDownloadBtn" class="btn btn-primary">
+          <div class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 8.5L12 3L20 8.5M4 8.5L12 14M4 8.5V16.5L12 22M20 8.5L12 14M20 8.5V16.5L12 22M12 14V22" stroke="white"/>
+              <path d="M8 12L12 14.5L16 12" stroke="white"/>
+            </svg>
+          </div>
+          <div class="btn-text-group">
+            <span class="btn-text-small">DOWNLOAD FOR</span>
+            <span class="btn-text-large">Android APK</span>
+          </div>
+        </a>
+        <a href="Biznity.apk" download id="iosAlternativeBtn" class="btn btn-secondary">
+          <div class="btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 12h8M12 8v8" stroke="white"/>
+            </svg>
+          </div>
+          <div class="btn-text-group">
+            <span class="btn-text-small">COMING SOON</span>
+            <span class="btn-text-large">iOS (TestFlight)</span>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <div class="stats-row">
-      <div class="stat-item"><span class="stat-number">14k+</span><div class="stat-label">Active Businesses</div></div>
-      <div class="stat-item"><span class="stat-number">77</span><div class="stat-label">Districts</div></div>
-      <div class="stat-item"><span class="stat-number">100%</span><div class="stat-label">Free Access</div></div>
+    <div class="stats">
+      <div class="stat"><div class="stat-number">14K+</div><div class="stat-label">Businesses Listed</div></div>
+      <div class="stat"><div class="stat-number">77</div><div class="stat-label">Districts</div></div>
+      <div class="stat"><div class="stat-number">Free</div><div class="stat-label">Forever</div></div>
     </div>
   </div>
-</section>
 
-<!-- Phone Preview Section - clean, minimal -->
-<div class="container">
-  <div class="section">
-    <div class="section-tag">Modern interface</div>
-    <h2 class="section-title">Designed for <span style="color: var(--primary);">Nepali users</span></h2>
-    <p class="section-sub">Seamless experience, fast search, and local-first features</p>
+  <!-- features with white/red/black palette -->
+  <div class="features">
+    <h2 class="section-title">Built for<span class="highlight" style="color:var(--red);"> Nepal</span></h2>
+    <p class="section-sub">Everything you need, super clean & blazing fast</p>
+    <div class="grid">
+      <div class="card"><div class="card-icon">🏔️</div><h3>77 Districts</h3><p>From Taplejung to Darchula, all local businesses are on Biznity.</p></div>
+      <div class="card"><div class="card-icon">🛍️</div><h3>Product Discovery</h3><p>Explore trending products, local deals and special offers near you.</p></div>
+      <div class="card"><div class="card-icon">💼</div><h3>Job Hub</h3><p>Verified job listings from top Nepali companies, apply in seconds.</p></div>
+      <div class="card"><div class="card-icon">📅</div><h3>Events & Expos</h3><p>Never miss a business event, workshop or networking meetup.</p></div>
+      <div class="card"><div class="card-icon">✓</div><h3>Verified Badges</h3><p>Trust & transparency with real business verification.</p></div>
+      <div class="card"><div class="card-icon">⚡</div><h3>Lightweight</h3><p>Optimized for all Nepali smartphones, even on 4G.</p></div>
+    </div>
+  </div>
 
-    <div class="mockup-wrapper">
-      <div class="phone-mock">
-        <div class="mock-screen">
-          <div class="mock-header">
-            <span class="mock-logo" style="font-weight:800;">Biz<span style="color:#D62828;">nity</span></span>
-            <div style="width:30px; height:30px; background: rgba(214,40,40,0.2); border-radius: 20px;"></div>
-          </div>
-          <div class="search-bar">
-            <span>🔍</span><span style="flex:1; font-size:11px; opacity:0.5;">Search business, product...</span>
-          </div>
-          <div class="chip-row">
-            <span class="chip active">All</span><span class="chip">Products</span><span class="chip">Jobs</span><span class="chip">Events</span><span class="chip">Offers</span>
-          </div>
-          <div class="list-item">
-            <div class="item-thumb" style="background: linear-gradient(135deg, #b83b3b, #7a1f1f);"></div>
-            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">Himalayan Mart</div><div style="font-size:9px; opacity:0.6;">Kathmandu · Grocery</div></div>
-            <div style="font-size:9px; background: rgba(214,40,40,0.2); padding:2px 8px; border-radius:20px;">✓ verified</div>
-          </div>
-          <div class="list-item">
-            <div class="item-thumb" style="background: linear-gradient(145deg, #2b2b38, #1b1b26);"></div>
-            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">TechHub Nepal</div><div style="font-size:9px; opacity:0.6;">IT & Services · Pokhara</div></div>
-            <div style="font-size:9px; color:#F87171;">★ featured</div>
-          </div>
-          <div class="list-item">
-            <div class="item-thumb" style="background: linear-gradient(135deg, #2f5a3a, #1b3b22);"></div>
-            <div style="flex:1;"><div style="font-weight:600; font-size:12px;">Organic Mart</div><div style="font-size:9px; opacity:0.6;">Butwal · Organic Products</div></div>
-            <div style="font-size:9px;">🔥 new</div>
-          </div>
+  <!-- clean phone preview -->
+  <div class="mock-section">
+    <div class="mock-phone">
+      <div class="mock-screen">
+        <div class="mock-header">
+          <span style="font-weight:700; font-size:14px;">Biz<span style="color:#E11D2C;">nity</span></span>
+          <span style="background:#E11D2C; width:24px; height:24px; border-radius:12px;"></span>
         </div>
+        <div class="mock-search"></div>
+        <div class="mock-chip-row">
+          <span class="mock-chip" style="background:#E11D2C20; border:0.5px solid #E11D2C;">For you</span>
+          <span class="mock-chip">Business</span>
+          <span class="mock-chip">Jobs</span>
+        </div>
+        <div class="mock-item"><div class="mock-thumb"></div><div><div style="font-size:12px; font-weight:600;">Himalayan Mart</div><div style="font-size:9px; opacity:0.6;">Kathmandu</div></div><span style="font-size:8px; color:#E11D2C;">★</span></div>
+        <div class="mock-item"><div class="mock-thumb"></div><div><div style="font-size:12px; font-weight:600;">Tech Nepal</div><div style="font-size:9px; opacity:0.6;">IT Services</div></div></div>
+        <div class="mock-item"><div class="mock-thumb"></div><div><div style="font-size:12px; font-weight:600;">Organic Mart</div><div style="font-size:9px; opacity:0.6;">Butwal</div></div></div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Features premium -->
-<div class="container">
-  <div class="section" style="padding-top: 20px;">
-    <div class="section-tag">Why Biznity</div>
-    <h2 class="section-title">Everything in one <span style="color: var(--primary);">powerful app</span></h2>
-    <p class="section-sub">Built for entrepreneurs, job seekers, and customers across Nepal</p>
-
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🏔️</div><div class="feature-title">All 77 Districts</div><div class="feature-desc">Complete coverage from Mechi to Mahakali — local businesses, local impact.</div></div>
-      <div class="feature-card"><div class="feature-icon">🛍️</div><div class="feature-title">Product Discovery</div><div class="feature-desc">Explore trending products, exclusive deals and local artisans in real-time.</div></div>
-      <div class="feature-card"><div class="feature-icon">💼</div><div class="feature-title">Job Hub</div><div class="feature-desc">Find thousands of verified job opportunities from Nepal's top companies.</div></div>
-      <div class="feature-card"><div class="feature-icon">📅</div><div class="feature-title">Local Events</div><div class="feature-desc">Business expos, workshops, networking — never miss an event near you.</div></div>
-      <div class="feature-card"><div class="feature-icon">🔐</div><div class="feature-title">Verified Listings</div><div class="feature-desc">Trust & transparency with verified badges and real reviews.</div></div>
-      <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-title">Lightning Fast</div><div class="feature-desc">Optimized for Nepali networks, light and blazing fast on any device.</div></div>
-    </div>
+  <!-- bottom CTA download again -->
+  <div class="cta-block">
+    <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">Download <span style="color:var(--red);">Biznity.apk</span></h3>
+    <p style="color: rgba(255,255,255,0.6); margin-bottom: 28px;">Install directly • Secure • Free for all Nepali users</p>
+    <a href="Biznity.apk" download id="footerDownloadBtn" class="btn btn-primary" style="padding: 14px 36px; font-weight: 600;">
+      ⬇️ Download APK Now
+    </a>
   </div>
+</main>
 
-  <!-- CTA section -->
-  <div class="cta-modern">
-    <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 16px;">Join 14,000+ businesses on Biznity</h3>
-    <p style="color: #9CA3AF; max-width: 520px; margin: 0 auto 32px auto;">Download the app now and explore Nepal's fastest growing business network</p>
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="biznity.apk" download class="btn-pro btn-primary" style="background: var(--primary);">
-        <span>📱 Download for Android</span>
-      </a>
-      <a href="biznityios.apk" download class="btn-pro" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);">
-        <span>🍏 Download for iOS</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- footer -->
 <footer>
-  <div style="margin-bottom: 20px;">
-    <span style="font-weight: 700; font-size: 18px;">Biznity<span style="color: var(--primary);">*</span></span>
-  </div>
-  <p style="margin-bottom: 12px;">Nepal's #1 Business Platform — bridging opportunities across the nation</p>
-  <p style="font-size: 13px;">© 2025 Biznity · <a href="#" style="color: var(--primary); text-decoration: none;">biznity.online</a> · Made with ❤️ in Nepal</p>
+  <p style="margin-bottom: 8px;"><strong style="color: white;">Biznity</strong> — Nepal's #1 Business Platform</p>
+  <p>नेपालको व्यापार संसार एकै ठाउँमा • Made with ❤️ in Nepal</p>
 </footer>
 
 <script>
   (function() {
-    const androidBtn = document.getElementById('androidBtn');
-    const iosBtn = document.getElementById('iosBtn');
+    // detect device visual hint: for android highlight main download button
     const ua = navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipad|ipod/.test(ua);
     const isAndroid = /android/.test(ua);
+    const androidBtn = document.getElementById('androidDownloadBtn');
+    const footerBtn = document.getElementById('footerDownloadBtn');
+    const iosBtn = document.getElementById('iosAlternativeBtn');
 
-    if (isIOS) {
-      if (iosBtn) {
-        iosBtn.classList.add('btn-primary');
-        iosBtn.classList.remove('btn-outline-light');
-        iosBtn.style.background = "var(--primary)";
-        iosBtn.style.boxShadow = "0 8px 20px rgba(214,40,40,0.25)";
-        if(androidBtn) {
-          androidBtn.classList.remove('btn-primary');
-          androidBtn.classList.add('btn-outline-light');
-          androidBtn.style.background = "rgba(255,255,255,0.04)";
-        }
-      }
-    } else if (isAndroid) {
-      if (androidBtn) {
-        androidBtn.classList.add('btn-primary');
-        androidBtn.classList.remove('btn-outline-light');
-        androidBtn.style.background = "var(--primary)";
-        if(iosBtn) {
-          iosBtn.classList.remove('btn-primary');
-          iosBtn.style.background = "rgba(255,255,255,0.04)";
-        }
-      }
+    if (isAndroid) {
+      if (androidBtn) androidBtn.style.background = "#E11D2C";
+      if (footerBtn) footerBtn.style.background = "#E11D2C";
+    } else {
+      // keep as is, but still download apk works on any device
+      if (androidBtn) androidBtn.style.background = "#E11D2C";
     }
 
-    const downloadBtns = [androidBtn, iosBtn].filter(Boolean);
-    downloadBtns.forEach(btn => {
+    // download tracking / feedback
+    const allDownloadBtns = [androidBtn, footerBtn].filter(Boolean);
+    allDownloadBtns.forEach(btn => {
       btn.addEventListener('click', function(e) {
-        const smallSpan = this.querySelector('.btn-text-small');
-        if (smallSpan) {
-          const originalText = smallSpan.innerText;
-          smallSpan.innerText = '✓ Starting download...';
+        // simple feedback without breaking download
+        const originalHTML = this.innerHTML;
+        const tempSpan = document.createElement('span');
+        tempSpan.innerText = " ✓ Starting...";
+        // avoid destroying layout
+        if (this.querySelector('.btn-text-large')) {
+          const smallSpan = this.querySelector('.btn-text-small');
+          if (smallSpan) smallSpan.innerText = "✓ DOWNLOADING";
           setTimeout(() => {
-            smallSpan.innerText = originalText;
+            if (smallSpan) smallSpan.innerText = "DOWNLOAD FOR";
           }, 2500);
+        } else {
+          this.style.opacity = "0.8";
+          setTimeout(() => { this.style.opacity = "1"; }, 800);
         }
       });
     });
 
-    // subtle fade-in on feature cards
+    // ios alternative button shows alert because actual ipa not served
+    if (iosBtn) {
+      iosBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert("📱 iOS version coming soon! Meanwhile you can still download the Android APK or stay tuned.");
+      });
+    }
+
+    // slight fade effect for cards
+    const cards = document.querySelectorAll('.card');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -705,1734 +603,14 @@ Here is an HTML document that presents Biznity as a clean, professional business
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
-
-    document.querySelectorAll('.feature-card').forEach(card => {
+    }, { threshold: 0.1 });
+    cards.forEach(card => {
       card.style.opacity = "0";
       card.style.transform = "translateY(20px)";
-      card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+      card.style.transition = "opacity 0.4s ease, transform 0.4s ease";
       observer.observe(card);
     });
   })();
 </script>
-</body>
-</html>
-```<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biznity App — Nepal's #1 Business Platform</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --red: #C8181A;
-    --red-dark: #8B0000;
-    --red-deep: #5C0000;
-    --red-light: #FF3535;
-    --red-glow: rgba(200,24,26,0.4);
-    --black: #0A0A0A;
-    --black-mid: #111111;
-    --black-soft: #1A1A1A;
-    --white: #FFFFFF;
-    --white-muted: rgba(255,255,255,0.7);
-    --white-faint: rgba(255,255,255,0.08);
-    --white-border: rgba(255,255,255,0.12);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ─── MOUNTAIN BACKGROUND ─────────────────────────────── */
-  .bg-scene {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .bg-scene svg {
-    width: 100%;
-    height: 100%;
-    opacity: 0.18;
-    filter: blur(3px);
-  }
-
-  .bg-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(140,0,0,0.55) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(80,0,0,0.35) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.97) 100%);
-  }
-
-  /* ─── NAV ──────────────────────────────────────────────── */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(10,10,10,0.6);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--white-border);
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-
-  .logo-mark {
-    width: 36px;
-    height: 36px;
-    background: var(--red);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 18px;
-    color: white;
-    letter-spacing: -1px;
-  }
-
-  .logo-text {
-    font-size: 22px;
-    font-weight: 800;
-    color: white;
-    letter-spacing: -0.5px;
-  }
-
-  .logo-text span { color: var(--red); }
-  .logo-dot { color: var(--red); font-size: 28px; line-height: 0; vertical-align: -2px; }
-
-  .nav-badge {
-    background: rgba(200,24,26,0.15);
-    border: 1px solid rgba(200,24,26,0.4);
-    color: #FF6B6B;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-  }
-
-  /* ─── HERO ──────────────────────────────────────────────── */
-  .hero {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(200,24,26,0.1);
-    border: 1px solid rgba(200,24,26,0.35);
-    color: #FF8080;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 16px;
-    border-radius: 30px;
-    margin-bottom: 32px;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-tag .dot {
-    width: 7px; height: 7px;
-    background: #FF4444;
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .hero-title {
-    font-size: clamp(38px, 7vw, 80px);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-    animation: fadeUp 0.7s 0.1s ease both;
-  }
-
-  .hero-title .white { color: var(--white); }
-  .hero-title .red {
-    color: var(--red);
-    text-shadow: 0 0 60px rgba(200,24,26,0.6);
-  }
-  .hero-title .accent {
-    background: linear-gradient(135deg, #FF4444 0%, #FF0000 50%, #C8181A 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-nepali {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: clamp(14px, 2.5vw, 20px);
-    color: var(--white-muted);
-    margin-bottom: 12px;
-    font-weight: 400;
-    animation: fadeUp 0.7s 0.15s ease both;
-  }
-
-  .hero-sub {
-    font-size: clamp(15px, 2.5vw, 20px);
-    color: var(--white-muted);
-    max-width: 520px;
-    line-height: 1.6;
-    margin-bottom: 52px;
-    font-weight: 300;
-    animation: fadeUp 0.7s 0.2s ease both;
-  }
-
-  /* ─── DOWNLOAD BUTTONS ──────────────────────────────────── */
-  .download-section {
-    animation: fadeUp 0.7s 0.3s ease both;
-    margin-bottom: 60px;
-  }
-
-  .download-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 20px;
-  }
-
-  .download-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-download {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 28px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: pointer;
-    border: none;
-    position: relative;
-    overflow: hidden;
-    min-width: 200px;
-  }
-
-  .btn-download::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .btn-download:hover { transform: translateY(-3px) scale(1.02); }
-  .btn-download:hover::before { opacity: 1; }
-  .btn-download:active { transform: translateY(0) scale(0.98); }
-
-  .btn-android {
-    background: linear-gradient(135deg, var(--red) 0%, #9B0000 100%);
-    color: white;
-    box-shadow: 0 8px 32px rgba(200,24,26,0.4);
-  }
-
-  .btn-android::before {
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-  }
-
-  .btn-ios {
-    background: rgba(255,255,255,0.06);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.18);
-    backdrop-filter: blur(10px);
-  }
-
-  .btn-ios:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.3);
-  }
-
-  .btn-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .btn-icon svg { width: 28px; height: 28px; }
-
-  .btn-text-group { text-align: left; }
-
-  .btn-small {
-    font-size: 11px;
-    font-weight: 400;
-    opacity: 0.75;
-    letter-spacing: 0.3px;
-    display: block;
-    margin-bottom: 2px;
-  }
-
-  .btn-big {
-    font-size: 16px;
-    font-weight: 700;
-    display: block;
-    letter-spacing: -0.3px;
-  }
-
-  /* ─── STATS BAR ──────────────────────────────────────────── */
-  .stats-bar {
-    display: flex;
-    gap: 0;
-    justify-content: center;
-    align-items: stretch;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--white-border);
-    border-radius: 16px;
-    overflow: hidden;
-    max-width: 500px;
-    margin: 0 auto;
-    animation: fadeUp 0.7s 0.4s ease both;
-  }
-
-  .stat-item {
-    flex: 1;
-    padding: 16px 20px;
-    text-align: center;
-    border-right: 1px solid var(--white-border);
-  }
-
-  .stat-item:last-child { border-right: none; }
-
-  .stat-num {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--red-light);
-    display: block;
-    letter-spacing: -0.5px;
-  }
-
-  .stat-lbl {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    margin-top: 2px;
-    display: block;
-  }
-
-  /* ─── PHONE MOCKUP ───────────────────────────────────────── */
-  .phone-section {
-    position: relative;
-    z-index: 10;
-    padding: 40px 24px 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .section-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .section-title {
-    font-size: clamp(24px, 4vw, 40px);
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: -1px;
-    margin-bottom: 8px;
-  }
-
-  .section-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    margin-bottom: 60px;
-    font-weight: 300;
-  }
-
-  .phone-mockup-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: -20px;
-  }
-
-  .phone-glow {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(200,24,26,0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: 0;
-  }
-
-  .phone-frame {
-    position: relative;
-    z-index: 2;
-    width: 220px;
-    background: #111;
-    border-radius: 36px;
-    border: 2px solid rgba(255,255,255,0.12);
-    overflow: hidden;
-    box-shadow:
-      0 40px 80px rgba(0,0,0,0.7),
-      0 0 0 1px rgba(255,255,255,0.05),
-      inset 0 1px 0 rgba(255,255,255,0.1);
-    animation: floatPhone 4s ease-in-out infinite;
-  }
-
-  @keyframes floatPhone {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-
-  .phone-notch {
-    height: 26px;
-    background: #0A0A0A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .phone-notch-pill {
-    width: 80px;
-    height: 10px;
-    background: #1A1A1A;
-    border-radius: 5px;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .phone-screen {
-    background: linear-gradient(160deg, #0A0A0A 0%, #1A0000 100%);
-    padding: 14px 12px;
-    min-height: 380px;
-  }
-
-  .app-header-mock {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-  }
-
-  .app-logo-mock {
-    font-size: 14px;
-    font-weight: 800;
-    color: white;
-    letter-spacing: -0.5px;
-  }
-
-  .app-logo-mock span { color: var(--red); }
-
-  .app-search-mock {
-    background: rgba(255,255,255,0.08);
-    border-radius: 8px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    gap: 6px;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .search-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 50%; }
-  .search-line { flex: 1; height: 2px; background: rgba(255,255,255,0.1); border-radius: 1px; }
-
-  .app-cat-row {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 12px;
-    overflow: hidden;
-  }
-
-  .cat-chip {
-    background: rgba(200,24,26,0.2);
-    border: 1px solid rgba(200,24,26,0.3);
-    border-radius: 6px;
-    padding: 4px 8px;
-    font-size: 7px;
-    font-weight: 600;
-    color: #FF8080;
-    white-space: nowrap;
-  }
-
-  .cat-chip.active { background: var(--red); color: white; border-color: var(--red); }
-
-  .app-card-mock {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 8px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .card-thumb {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
-
-  .card-info { flex: 1; }
-  .card-name { font-size: 8px; font-weight: 700; color: white; margin-bottom: 3px; }
-  .card-cat { font-size: 7px; color: rgba(255,255,255,0.4); }
-  .card-badge {
-    font-size: 6px;
-    background: rgba(200,24,26,0.2);
-    color: #FF8080;
-    border-radius: 4px;
-    padding: 2px 5px;
-    border: 1px solid rgba(200,24,26,0.3);
-  }
-
-  .phone-home { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; width: 60px; margin: 8px auto 0; }
-
-  /* ─── FEATURES ───────────────────────────────────────────── */
-  .features-section {
-    position: relative;
-    z-index: 10;
-    padding: 80px 24px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 48px;
-  }
-
-  .feature-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    padding: 28px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--red), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .feature-card:hover {
-    background: rgba(200,24,26,0.05);
-    border-color: rgba(200,24,26,0.25);
-    transform: translateY(-4px);
-  }
-
-  .feature-card:hover::before { opacity: 1; }
-
-  .feat-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(200,24,26,0.12);
-    border: 1px solid rgba(200,24,26,0.25);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    font-size: 22px;
-  }
-
-  .feat-title {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: white;
-  }
-
-  .feat-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ─── CTA STRIP ──────────────────────────────────────────── */
-  .cta-strip {
-    position: relative;
-    z-index: 10;
-    margin: 20px 24px 80px;
-    border-radius: 24px;
-    padding: 60px 40px;
-    text-align: center;
-    background:
-      linear-gradient(135deg, rgba(140,0,0,0.5) 0%, rgba(30,0,0,0.8) 100%);
-    border: 1px solid rgba(200,24,26,0.3);
-    overflow: hidden;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta-strip::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(200,24,26,0.3), transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-title {
-    font-size: clamp(22px, 4vw, 38px);
-    font-weight: 900;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-  }
-
-  .cta-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 36px;
-    font-weight: 300;
-  }
-
-  /* ─── FOOTER ─────────────────────────────────────────────── */
-  footer {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 32px 24px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.3);
-    font-size: 13px;
-  }
-
-  footer a { color: var(--red); text-decoration: none; }
-  footer strong { color: white; }
-
-  /* ─── ANIMATIONS ─────────────────────────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── RESPONSIVE ─────────────────────────────────────────── */
-  @media (max-width: 640px) {
-    nav { padding: 14px 20px; }
-    .hero { padding: 100px 20px 60px; }
-    .download-buttons { flex-direction: column; align-items: center; }
-    .btn-download { width: 100%; max-width: 320px; justify-content: center; }
-    .stats-bar { flex-direction: column; max-width: 260px; }
-    .stat-item { border-right: none; border-bottom: 1px solid var(--white-border); }
-    .stat-item:last-child { border-bottom: none; }
-    .cta-strip { padding: 40px 24px; margin: 20px 16px 60px; }
-    .features-section { padding: 60px 16px; }
-  }
-
-  @media (max-width: 400px) {
-    .hero-title { letter-spacing: -1px; }
-    .logo-text { font-size: 18px; }
-  }
-
-  /* Download trigger flash */
-  .flash-ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 18px;
-    border: 2px solid var(--red);
-    opacity: 0;
-    pointer-events: none;
-    transition: none;
-  }
-
-  .btn-android:active .flash-ring { opacity: 1; }
-</style>
-</head>
-<body>
-
-<!-- ── MOUNTAIN + TEMPLE BACKGROUND SVG ─────────────────── -->
-<div class="bg-scene">
-  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <!-- Sky -->
-    <rect width="1440" height="900" fill="#1A0000"/>
-
-    <!-- Distant peaks - farthest -->
-    <polygon points="0,600 120,300 280,520 400,200 560,480 700,150 860,420 1000,180 1160,440 1280,220 1440,500 1440,900 0,900" fill="#3A0808"/>
-
-    <!-- Mid mountains -->
-    <polygon points="0,700 100,400 200,580 350,280 500,540 650,300 800,500 950,260 1100,480 1250,320 1440,560 1440,900 0,900" fill="#2A0505"/>
-
-    <!-- Temple structure center-left -->
-    <g transform="translate(300,350)">
-      <!-- Temple base tiers -->
-      <rect x="-60" y="180" width="120" height="20" fill="#4A0A0A"/>
-      <rect x="-50" y="160" width="100" height="22" fill="#550C0C"/>
-      <rect x="-40" y="140" width="80" height="22" fill="#600E0E"/>
-      <!-- Temple body -->
-      <rect x="-30" y="80" width="60" height="62" fill="#4A0A0A"/>
-      <!-- Windows -->
-      <rect x="-22" y="95" width="12" height="16" fill="#2A0505"/>
-      <rect x="10" y="95" width="12" height="16" fill="#2A0505"/>
-      <!-- Temple spire tiers -->
-      <rect x="-25" y="60" width="50" height="22" fill="#550C0C"/>
-      <rect x="-18" y="42" width="36" height="20" fill="#600E0E"/>
-      <rect x="-12" y="26" width="24" height="18" fill="#6A1010"/>
-      <rect x="-7" y="14" width="14" height="14" fill="#740C0C"/>
-      <!-- Pinnacle -->
-      <polygon points="0,-5 -4,14 4,14" fill="#880808"/>
-      <!-- Decorative flag lines -->
-      <line x1="0" y1="-5" x2="-30" y2="-35" stroke="#8A0000" stroke-width="0.8" opacity="0.6"/>
-      <line x1="0" y1="-5" x2="30" y2="-30" stroke="#8A0000" stroke-width="0.8" opacity="0.6"/>
-    </g>
-
-    <!-- Temple structure right side -->
-    <g transform="translate(1080,380)">
-      <rect x="-50" y="180" width="100" height="18" fill="#4A0A0A"/>
-      <rect x="-42" y="162" width="84" height="20" fill="#550C0C"/>
-      <rect x="-32" y="145" width="64" height="19" fill="#5A0D0D"/>
-      <rect x="-25" y="85" width="50" height="62" fill="#4A0A0A"/>
-      <rect x="-18" y="100" width="10" height="14" fill="#2A0505"/>
-      <rect x="8" y="100" width="10" height="14" fill="#2A0505"/>
-      <rect x="-22" y="66" width="44" height="21" fill="#550C0C"/>
-      <rect x="-15" y="50" width="30" height="18" fill="#600E0E"/>
-      <rect x="-9" y="36" width="18" height="16" fill="#6A1010"/>
-      <rect x="-5" y="24" width="10" height="13" fill="#740C0C"/>
-      <polygon points="0,-4 -3,11 3,11" fill="#880808"/>
-    </g>
-
-    <!-- Himalayan peak left - very tall -->
-    <polygon points="-50,900 200,120 260,280 310,150 370,320 420,900" fill="#1E0404"/>
-
-    <!-- Himalayan peak right -->
-    <polygon points="1100,900 1200,280 1260,380 1320,200 1380,350 1490,900" fill="#1E0404"/>
-
-    <!-- Snow caps -->
-    <polygon points="200,120 220,200 260,280 240,260 180,240" fill="#3D0A0A" opacity="0.8"/>
-    <polygon points="1200,280 1220,340 1260,380 1245,360 1185,330" fill="#3D0A0A" opacity="0.8"/>
-    <polygon points="700,150 720,220 760,270 740,250 680,230" fill="#3D0A0A" opacity="0.7"/>
-
-    <!-- Foreground hills -->
-    <path d="M0,800 Q200,680 400,750 Q600,820 800,700 Q1000,600 1200,720 Q1350,780 1440,750 L1440,900 L0,900 Z" fill="#150202"/>
-
-    <!-- Stars -->
-    <circle cx="100" cy="50" r="1.2" fill="#FF6666" opacity="0.6"/>
-    <circle cx="250" cy="30" r="0.8" fill="#FF8888" opacity="0.5"/>
-    <circle cx="450" cy="70" r="1.5" fill="#FFAAAA" opacity="0.4"/>
-    <circle cx="700" cy="20" r="1" fill="#FF9999" opacity="0.6"/>
-    <circle cx="900" cy="55" r="1.2" fill="#FF7777" opacity="0.5"/>
-    <circle cx="1100" cy="35" r="0.9" fill="#FFBBBB" opacity="0.4"/>
-    <circle cx="1320" cy="60" r="1.3" fill="#FF8888" opacity="0.6"/>
-    <circle cx="550" cy="45" r="0.7" fill="#FFCCCC" opacity="0.5"/>
-    <circle cx="1200" cy="80" r="1.1" fill="#FF6666" opacity="0.4"/>
-  </svg>
-</div>
-<div class="bg-overlay"></div>
-
-<!-- ── NAVIGATION ─────────────────────────────────────────── -->
-<nav>
-  <a class="nav-logo" href="#">
-    <div class="logo-mark">B</div>
-    <span class="logo-text">Biz<span>nity</span><span class="logo-dot">*</span></span>
-  </a>
-  <div class="nav-badge">📱 App Now Live</div>
-</nav>
-
-<!-- ── HERO SECTION ───────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-tag">
-    <span class="dot"></span>
-    Nepal's #1 Business Platform
-  </div>
-
-  <h1 class="hero-title">
-    <span class="white">Nepal ko Business,</span><br>
-    <span class="accent">Aaba Haatma!</span>
-  </h1>
-
-  <p class="hero-nepali">नेपालको उत्कृष्ट व्यापारहरू अब तपाईंको मोबाइलमा</p>
-
-  <p class="hero-sub">
-    Discover businesses, products, jobs &amp; events across all 77 districts of Nepal — now in your pocket.
-  </p>
-
-  <div class="download-section">
-    <p class="download-label">Download Free — Available Now</p>
-    <div class="download-buttons">
-      <!-- Android -->
-      <a class="btn-download btn-android" href="biznity.apk" download="biznity.apk" id="androidBtn">
-        <div class="flash-ring"></div>
-        <div class="btn-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.523 15.3414C17.523 16.2083 16.8166 16.9147 15.9496 16.9147H8.0498C7.18283 16.9147 6.47648 16.2083 6.47648 15.3414V8.65869C6.47648 7.79172 7.18283 7.08533 8.0498 7.08533H15.9496C16.8166 7.08533 17.523 7.79172 17.523 8.65869V15.3414Z" fill="white" opacity="0.2"/>
-            <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM5.5 10H4V14H5.5V10ZM8 16.5C8 17.33 8.67 18 9.5 18H10V20.5C10 21.33 10.67 22 11.5 22C12.33 22 13 21.33 13 20.5V18H14.5C15.33 18 16 17.33 16 16.5V9H8V16.5ZM19.5 10H18V14H19.5V10ZM14.5 3.5L16 2L14.5 .5L13 2L14.5 3.5ZM9.5 3.5L11 2L9.5 .5L8 2L9.5 3.5Z"/>
-            <path d="M8.5 8L5.5 3M15.5 8L18.5 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="8.5" cy="2.5" r="1" fill="white"/>
-            <circle cx="15.5" cy="2.5" r="1" fill="white"/>
-            <rect x="8" y="8.5" width="8" height="8" rx="1" fill="white" opacity="0.9"/>
-            <rect x="10" y="6.5" width="1.5" height="3" rx="0.5" fill="white"/>
-            <rect x="12.5" y="6.5" width="1.5" height="3" rx="0.5" fill="white"/>
-          </svg>
-        </div>
-        <div class="btn-text-group">
-          <span class="btn-small">Download for</span>
-          <span class="btn-big">Android APK</span>
-        </div>
-      </a>
-
-      <!-- iOS -->
-      <a class="btn-download btn-ios" href="biznityios.apk" download="biznityios.apk" id="iosBtn">
-        <div class="btn-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-          </svg>
-        </div>
-        <div class="btn-text-group">
-          <span class="btn-small">Download for</span>
-          <span class="btn-big">iPhone / iOS</span>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Stats -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-num">14+</span>
-      <span class="stat-lbl">Businesses</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">77</span>
-      <span class="stat-lbl">Districts</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">Free</span>
-      <span class="stat-lbl">Always</span>
-    </div>
-  </div>
-</section>
-
-<!-- ── PHONE PREVIEW ───────────────────────────────────────── -->
-<section class="phone-section">
-  <p class="section-label">Preview</p>
-  <h2 class="section-title">Built for Nepal, <span style="color:var(--red)">Beautifully</span></h2>
-  <p class="section-sub">Clean, fast, and powerful — made for every Nepali smartphone</p>
-
-  <div class="phone-mockup-wrap">
-    <div class="phone-glow"></div>
-    <div class="phone-frame">
-      <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-      <div class="phone-screen">
-        <!-- App header -->
-        <div class="app-header-mock">
-          <span class="app-logo-mock">Biz<span>nity</span> <span style="color:var(--red);font-size:11px">*</span></span>
-          <div style="width:24px;height:24px;background:rgba(200,24,26,0.2);border-radius:50%;border:1px solid rgba(200,24,26,0.4);"></div>
-        </div>
-
-        <!-- Search bar -->
-        <div class="app-search-mock">
-          <div class="search-dot"></div>
-          <div class="search-line"></div>
-          <div style="width:14px;height:14px;background:var(--red);border-radius:4px;flex-shrink:0;"></div>
-        </div>
-
-        <!-- Category chips -->
-        <div class="app-cat-row">
-          <div class="cat-chip active">All</div>
-          <div class="cat-chip">Products</div>
-          <div class="cat-chip">Jobs</div>
-          <div class="cat-chip">Events</div>
-          <div class="cat-chip">Offers🔥</div>
-        </div>
-
-        <!-- Cards -->
-        <div class="app-card-mock">
-          <div class="card-thumb" style="background:linear-gradient(135deg,#8B0000,#C8181A);"></div>
-          <div class="card-info">
-            <div class="card-name">Himalayan Restaurant</div>
-            <div class="card-cat">Food & Beverage · Pokhara</div>
-          </div>
-          <div class="card-badge">✓ Verified</div>
-        </div>
-        <div class="app-card-mock">
-          <div class="card-thumb" style="background:linear-gradient(135deg,#1A1A2E,#4A0A0A);"></div>
-          <div class="card-info">
-            <div class="card-name">TechNepal Solutions</div>
-            <div class="card-cat">IT Services · Kathmandu</div>
-          </div>
-          <div class="card-badge">Featured</div>
-        </div>
-        <div class="app-card-mock">
-          <div class="card-thumb" style="background:linear-gradient(135deg,#0A3A0A,#1A5A0A);"></div>
-          <div class="card-info">
-            <div class="card-name">GreenMart Nepal</div>
-            <div class="card-cat">Retail · Butwal</div>
-          </div>
-          <div class="card-badge">New</div>
-        </div>
-
-        <div class="phone-home"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FEATURES SECTION ───────────────────────────────────── -->
-<section class="features-section">
-  <p class="section-label">Why Biznity App?</p>
-  <h2 class="section-title">Everything in <span style="color:var(--red)">One App</span></h2>
-  <p class="section-sub">Your all-in-one Nepal business companion</p>
-
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feat-icon">🏢</div>
-      <div class="feat-title">Business Directory</div>
-      <div class="feat-desc">Find and connect with thousands of verified businesses across all 77 districts of Nepal.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feat-icon">🛍️</div>
-      <div class="feat-title">Products & Offers</div>
-      <div class="feat-desc">Browse products and exclusive deals from local businesses near you in real time.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feat-icon">💼</div>
-      <div class="feat-title">Job Listings</div>
-      <div class="feat-desc">Discover job opportunities from businesses across Nepal — apply in seconds.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feat-icon">📅</div>
-      <div class="feat-title">Events</div>
-      <div class="feat-desc">Stay updated with business events, expos, and local happenings around you.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feat-icon">📍</div>
-      <div class="feat-title">All 77 Districts</div>
-      <div class="feat-desc">Full coverage of Nepal — from Taplejung to Darchula, every district is on Biznity.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feat-icon">🆓</div>
-      <div class="feat-title">100% Free</div>
-      <div class="feat-desc">No subscription, no hidden fees. Biznity is and always will be free for users.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CTA STRIP ──────────────────────────────────────────── -->
-<section class="cta-strip">
-  <h2 class="cta-title">Ready to explore Nepal's best businesses?</h2>
-  <p class="cta-sub">Join thousands of Nepalis already discovering opportunities on Biznity</p>
-  <div class="download-buttons" style="justify-content:center;">
-    <a class="btn-download btn-android" href="biznity.apk" download="biznity.apk" style="min-width:180px;">
-      <div class="btn-text-group" style="text-align:center;width:100%;">
-        <span class="btn-small">Get the App</span>
-        <span class="btn-big">⬇ Download Android</span>
-      </div>
-    </a>
-    <a class="btn-download btn-ios" href="biznityios.apk" download="biznityios.apk" style="min-width:180px;">
-      <div class="btn-text-group" style="text-align:center;width:100%;">
-        <span class="btn-small">Get the App</span>
-        <span class="btn-big"> Download iPhone</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ── FOOTER ─────────────────────────────────────────────── -->
-<footer>
-  <p style="margin-bottom:8px;">
-    <strong>Biznity</strong> — Nepal's #1 Business Platform &nbsp;·&nbsp;
-    <a href="https://biznity.online">biznity.online</a>
-  </p>
-  <p>नेपालको व्यापार, एकै ठाउँमा &nbsp;·&nbsp; Made with ❤️ in Nepal</p>
-</footer>
-
-<script>
-  // Detect device and auto-highlight the right button
-  const ua = navigator.userAgent.toLowerCase();
-  const isIOS = /iphone|ipad|ipod/.test(ua);
-  const isAndroid = /android/.test(ua);
-
-  const androidBtn = document.getElementById('androidBtn');
-  const iosBtn = document.getElementById('iosBtn');
-
-  if (isIOS) {
-    iosBtn.style.background = 'linear-gradient(135deg, var(--red) 0%, #9B0000 100%)';
-    iosBtn.style.boxShadow = '0 8px 32px rgba(200,24,26,0.4)';
-    iosBtn.style.border = 'none';
-    androidBtn.style.background = 'rgba(255,255,255,0.06)';
-    androidBtn.style.boxShadow = 'none';
-    androidBtn.style.border = '1px solid rgba(255,255,255,0.18)';
-  }
-
-  // Add download tracking feedback
-  [androidBtn, iosBtn].forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const orig = this.querySelector('.btn-big').textContent;
-      this.querySelector('.btn-small').textContent = '✓ Starting download...';
-      setTimeout(() => {
-        this.querySelector('.btn-small').textContent = this === androidBtn ? 'Download for' : 'Download for';
-      }, 3000);
-    });
-  });
-
-  // Scroll reveal for feature cards
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = `fadeUp 0.5s ${i * 0.08}s ease both`;
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Biznity App Download</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
-
-    body{
-      background:#ffffff;
-      overflow-x:hidden;
-      color:#111827;
-    }
-
-    a{
-      text-decoration:none;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================== */
-
-    .navbar{
-      width:100%;
-      height:78px;
-      background:#fff;
-      border-bottom:1px solid #eee;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:999;
-      display:flex;
-      justify-content:center;
-    }
-
-    .nav-container{
-      width:100%;
-      max-width:1400px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 30px;
-    }
-
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:34px;
-      font-weight:800;
-      color:#000;
-    }
-
-    .logo span{
-      color:#e50914;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:35px;
-    }
-
-    .nav-links a{
-      color:#4b5563;
-      font-weight:500;
-      transition:0.3s;
-    }
-
-    .nav-links a:hover{
-      color:#e50914;
-    }
-
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    .btn-register{
-      background:#e50914;
-      color:#fff;
-      padding:12px 22px;
-      border-radius:12px;
-      font-weight:600;
-      transition:0.3s;
-    }
-
-    .btn-register:hover{
-      background:#ff1e1e;
-      transform:translateY(-2px);
-    }
-
-    /* =========================
-       HERO SECTION
-    ========================== */
-
-    .hero{
-      position:relative;
-      width:100%;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      padding-top:80px;
-      background:
-      linear-gradient(
-      135deg,
-      rgba(80,0,0,0.75),
-      rgba(180,0,0,0.88)
-      ),
-      url('https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070&auto=format&fit=crop');
-
-      background-size:cover;
-      background-position:center;
-    }
-
-    /* RED BLUR EFFECT */
-
-    .hero::before{
-      content:'';
-      position:absolute;
-      width:700px;
-      height:700px;
-      background:red;
-      border-radius:50%;
-      filter:blur(160px);
-      opacity:0.22;
-      top:-250px;
-      right:-200px;
-    }
-
-    .hero::after{
-      content:'';
-      position:absolute;
-      width:500px;
-      height:500px;
-      background:#ff0000;
-      border-radius:50%;
-      filter:blur(180px);
-      opacity:0.2;
-      bottom:-200px;
-      left:-120px;
-    }
-
-    .hero-content{
-      width:100%;
-      max-width:1300px;
-      padding:40px 25px;
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
-    }
-
-    /* LEFT */
-
-    .left{
-      color:#fff;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 22px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.15);
-      backdrop-filter:blur(20px);
-      margin-bottom:25px;
-      font-size:14px;
-      font-weight:500;
-    }
-
-    .dot{
-      width:10px;
-      height:10px;
-      background:#00ff6a;
-      border-radius:50%;
-    }
-
-    h1{
-      font-size:72px;
-      line-height:1.05;
-      font-weight:800;
-      margin-bottom:25px;
-    }
-
-    h1 span{
-      color:#ffb3b3;
-    }
-
-    .description{
-      font-size:20px;
-      line-height:1.9;
-      color:#f3f4f6;
-      margin-bottom:35px;
-      max-width:650px;
-    }
-
-    .stats{
-      display:flex;
-      gap:25px;
-      flex-wrap:wrap;
-      margin-bottom:40px;
-    }
-
-    .stat-box{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      padding:14px 20px;
-      border-radius:16px;
-      backdrop-filter:blur(12px);
-      font-size:15px;
-      font-weight:500;
-    }
-
-    .download-buttons{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .download-btn{
-      padding:18px 30px;
-      border-radius:18px;
-      font-weight:600;
-      transition:0.4s;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-size:16px;
-    }
-
-    .android{
-      background:#fff;
-      color:#e50914;
-      box-shadow:0 15px 35px rgba(0,0,0,0.3);
-    }
-
-    .android:hover{
-      transform:translateY(-5px) scale(1.02);
-    }
-
-    .ios{
-      background:#111827;
-      color:#fff;
-      border:1px solid rgba(255,255,255,0.2);
-    }
-
-    .ios:hover{
-      transform:translateY(-5px) scale(1.02);
-    }
-
-    /* RIGHT */
-
-    .right{
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .phone-wrapper{
-      position:relative;
-    }
-
-    .phone-glow{
-      position:absolute;
-      width:420px;
-      height:420px;
-      background:#ff0000;
-      border-radius:50%;
-      filter:blur(130px);
-      opacity:0.25;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-    }
-
-    .phone{
-      width:360px;
-      position:relative;
-      z-index:2;
-      animation:float 5s ease-in-out infinite;
-      filter:drop-shadow(0 30px 60px rgba(0,0,0,0.55));
-    }
-
-    @keyframes float{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-15px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    /* =========================
-       FEATURE SECTION
-    ========================== */
-
-    .features{
-      width:100%;
-      padding:100px 20px;
-      background:#fff;
-    }
-
-    .features-container{
-      max-width:1300px;
-      margin:auto;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
-    }
-
-    .section-title h2{
-      font-size:52px;
-      margin-bottom:15px;
-      color:#111827;
-    }
-
-    .section-title p{
-      color:#6b7280;
-      font-size:18px;
-    }
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:28px;
-    }
-
-    .feature-card{
-      background:#fff;
-      border:1px solid #eee;
-      border-radius:28px;
-      padding:35px;
-      transition:0.4s;
-      box-shadow:0 10px 40px rgba(0,0,0,0.04);
-    }
-
-    .feature-card:hover{
-      transform:translateY(-10px);
-      border-color:#e50914;
-      box-shadow:0 25px 50px rgba(229,9,20,0.12);
-    }
-
-    .icon{
-      width:70px;
-      height:70px;
-      background:#fff5f5;
-      color:#e50914;
-      border-radius:20px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-      margin-bottom:25px;
-    }
-
-    .feature-card h3{
-      margin-bottom:15px;
-      font-size:24px;
-    }
-
-    .feature-card p{
-      color:#6b7280;
-      line-height:1.8;
-    }
-
-    /* FOOTER */
-
-    footer{
-      background:#0f0f0f;
-      color:#fff;
-      text-align:center;
-      padding:35px 20px;
-    }
-
-    footer p{
-      color:#9ca3af;
-    }
-
-    /* =========================
-       MOBILE
-    ========================== */
-
-    @media(max-width:1100px){
-
-      .hero-content{
-        grid-template-columns:1fr;
-        text-align:center;
-      }
-
-      .left{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-      }
-
-      .stats{
-        justify-content:center;
-      }
-
-      .right{
-        margin-top:30px;
-      }
-
-      h1{
-        font-size:56px;
-      }
-
-    }
-
-    @media(max-width:768px){
-
-      .nav-links{
-        display:none;
-      }
-
-      .logo{
-        font-size:28px;
-      }
-
-      h1{
-        font-size:42px;
-      }
-
-      .description{
-        font-size:17px;
-      }
-
-      .phone{
-        width:270px;
-      }
-
-      .download-buttons{
-        flex-direction:column;
-        width:100%;
-      }
-
-      .download-btn{
-        width:100%;
-        justify-content:center;
-      }
-
-      .section-title h2{
-        font-size:36px;
-      }
-
-    }
-
-    @media(max-width:500px){
-
-      .hero{
-        padding-top:100px;
-      }
-
-      h1{
-        font-size:34px;
-      }
-
-      .description{
-        font-size:15px;
-      }
-
-      .tag{
-        font-size:12px;
-      }
-
-      .stat-box{
-        width:100%;
-      }
-
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-
-  <nav class="navbar">
-
-    <div class="nav-container">
-
-      <div class="logo">
-        <span>Biz</span>nity
-      </div>
-
-      <div class="nav-links">
-        <a href="#">Products</a>
-        <a href="#">Offers 🔥</a>
-        <a href="#">Events</a>
-        <a href="#">Jobs</a>
-        <a href="#">Businesses</a>
-      </div>
-
-      <div class="nav-actions">
-        <a href="#" style="color:#374151;font-weight:600;">Sign In</a>
-        <a href="#" class="btn-register">Register</a>
-      </div>
-
-    </div>
-
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <!-- LEFT -->
-
-      <div class="left">
-
-        <div class="tag">
-          📍 Nepal's #1 Business Platform
-          <div class="dot"></div>
-        </div>
-
-        <h1>
-          Discover Nepal's <span>Best Businesses</span>
-        </h1>
-
-        <p class="description">
-          Explore products, services, jobs, offers, events and businesses across Nepal.
-          Download the official Biznity mobile app and become an early tester.
-        </p>
-
-        <div class="stats">
-
-          <div class="stat-box">
-            🏢 14+ Businesses
-          </div>
-
-          <div class="stat-box">
-            📦 4+ Products
-          </div>
-
-          <div class="stat-box">
-            💼 4+ Jobs
-          </div>
-
-          <div class="stat-box">
-            🇳🇵 All 77 Districts
-          </div>
-
-        </div>
-
-        <div class="download-buttons">
-
-          <a href="biznity.apk" class="download-btn android" download>
-            🤖 Download Android App
-          </a>
-
-          <a href="biznityios.ipa" class="download-btn ios" download>
-            🍎 Download iPhone App
-          </a>
-
-        </div>
-
-      </div>
-
-      <!-- RIGHT -->
-
-      <div class="right">
-
-        <div class="phone-wrapper">
-
-          <div class="phone-glow"></div>
-
-          <img
-            src="https://i.imgur.com/WCzJDWz.png"
-            class="phone"
-            alt="Biznity App"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FEATURES -->
-
-  <section class="features">
-
-    <div class="features-container">
-
-      <div class="section-title">
-
-        <h2>Explore Everything</h2>
-
-        <p>
-          Browse businesses, products, jobs, services and events from across Nepal.
-        </p>
-
-      </div>
-
-      <div class="feature-grid">
-
-        <div class="feature-card">
-
-          <div class="icon">🏢</div>
-
-          <h3>Businesses</h3>
-
-          <p>
-            Discover local businesses, startups and verified companies around Nepal.
-          </p>
-
-        </div>
-
-        <div class="feature-card">
-
-          <div class="icon">💼</div>
-
-          <h3>Jobs</h3>
-
-          <p>
-            Find jobs, internships and opportunities from trusted employers.
-          </p>
-
-        </div>
-
-        <div class="feature-card">
-
-          <div class="icon">🔥</div>
-
-          <h3>Offers</h3>
-
-          <p>
-            Explore discounts, deals and exclusive promotions from local brands.
-          </p>
-
-        </div>
-
-        <div class="feature-card">
-
-          <div class="icon">📅</div>
-
-          <h3>Events</h3>
-
-          <p>
-            Stay updated with upcoming events, expos and networking programs.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h2 style="margin-bottom:12px;">Biznity</h2>
-
-    <p>
-      © 2026 Biznity • Nepal's Smart Local Business Platform
-    </p>
-
-  </footer>
-
 </body>
 </html>
