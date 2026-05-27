@@ -1,6 +1,1031 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biznity App — Nepal's #1 Business Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #C8181A;
+    --red-dark: #8B0000;
+    --red-deep: #5C0000;
+    --red-light: #FF3535;
+    --red-glow: rgba(200,24,26,0.4);
+    --black: #0A0A0A;
+    --black-mid: #111111;
+    --black-soft: #1A1A1A;
+    --white: #FFFFFF;
+    --white-muted: rgba(255,255,255,0.7);
+    --white-faint: rgba(255,255,255,0.08);
+    --white-border: rgba(255,255,255,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── MOUNTAIN BACKGROUND ─────────────────────────────── */
+  .bg-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-scene svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+    filter: blur(3px);
+  }
+
+  .bg-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(140,0,0,0.55) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(80,0,0,0.35) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.97) 100%);
+  }
+
+  /* ─── NAV ──────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.6);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    color: white;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text span { color: var(--red); }
+  .logo-dot { color: var(--red); font-size: 28px; line-height: 0; vertical-align: -2px; }
+
+  .nav-badge {
+    background: rgba(200,24,26,0.15);
+    border: 1px solid rgba(200,24,26,0.4);
+    color: #FF6B6B;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── HERO ──────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,24,26,0.1);
+    border: 1px solid rgba(200,24,26,0.35);
+    color: #FF8080;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag .dot {
+    width: 7px; height: 7px;
+    background: #FF4444;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-size: clamp(38px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-title .white { color: var(--white); }
+  .hero-title .red {
+    color: var(--red);
+    text-shadow: 0 0 60px rgba(200,24,26,0.6);
+  }
+  .hero-title .accent {
+    background: linear-gradient(135deg, #FF4444 0%, #FF0000 50%, #C8181A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-nepali {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: var(--white-muted);
+    margin-bottom: 12px;
+    font-weight: 400;
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 20px);
+    color: var(--white-muted);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 52px;
+    font-weight: 300;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  /* ─── DOWNLOAD BUTTONS ──────────────────────────────────── */
+  .download-section {
+    animation: fadeUp 0.7s 0.3s ease both;
+    margin-bottom: 60px;
+  }
+
+  .download-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 20px;
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-download {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+  }
+
+  .btn-download::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .btn-download:hover { transform: translateY(-3px) scale(1.02); }
+  .btn-download:hover::before { opacity: 1; }
+  .btn-download:active { transform: translateY(0) scale(0.98); }
+
+  .btn-android {
+    background: linear-gradient(135deg, var(--red) 0%, #9B0000 100%);
+    color: white;
+    box-shadow: 0 8px 32px rgba(200,24,26,0.4);
+  }
+
+  .btn-android::before {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  }
+
+  .btn-ios {
+    background: rgba(255,255,255,0.06);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-ios:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .btn-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .btn-icon svg { width: 28px; height: 28px; }
+
+  .btn-text-group { text-align: left; }
+
+  .btn-small {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.75;
+    letter-spacing: 0.3px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .btn-big {
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+    letter-spacing: -0.3px;
+  }
+
+  /* ─── STATS BAR ──────────────────────────────────────────── */
+  .stats-bar {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: stretch;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--white-border);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 16px 20px;
+    text-align: center;
+    border-right: 1px solid var(--white-border);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--red-light);
+    display: block;
+    letter-spacing: -0.5px;
+  }
+
+  .stat-lbl {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* ─── PHONE MOCKUP ───────────────────────────────────────── */
+  .phone-section {
+    position: relative;
+    z-index: 10;
+    padding: 40px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 300;
+  }
+
+  .phone-mockup-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -20px;
+  }
+
+  .phone-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200,24,26,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 0;
+  }
+
+  .phone-frame {
+    position: relative;
+    z-index: 2;
+    width: 220px;
+    background: #111;
+    border-radius: 36px;
+    border: 2px solid rgba(255,255,255,0.12);
+    overflow: hidden;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(255,255,255,0.05),
+      inset 0 1px 0 rgba(255,255,255,0.1);
+    animation: floatPhone 4s ease-in-out infinite;
+  }
+
+  @keyframes floatPhone {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .phone-notch {
+    height: 26px;
+    background: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .phone-notch-pill {
+    width: 80px;
+    height: 10px;
+    background: #1A1A1A;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .phone-screen {
+    background: linear-gradient(160deg, #0A0A0A 0%, #1A0000 100%);
+    padding: 14px 12px;
+    min-height: 380px;
+  }
+
+  .app-header-mock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .app-logo-mock {
+    font-size: 14px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+
+  .app-logo-mock span { color: var(--red); }
+
+  .app-search-mock {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-dot { width: 8px; height: 8px; background: rgba(255,255,255,0.3); border-radius: 50%; }
+  .search-line { flex: 1; height: 2px; background: rgba(255,255,255,0.1); border-radius: 1px; }
+
+  .app-cat-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .cat-chip {
+    background: rgba(200,24,26,0.2);
+    border: 1px solid rgba(200,24,26,0.3);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 7px;
+    font-weight: 600;
+    color: #FF8080;
+    white-space: nowrap;
+  }
+
+  .cat-chip.active { background: var(--red); color: white; border-color: var(--red); }
+
+  .app-card-mock {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .card-thumb {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .card-info { flex: 1; }
+  .card-name { font-size: 8px; font-weight: 700; color: white; margin-bottom: 3px; }
+  .card-cat { font-size: 7px; color: rgba(255,255,255,0.4); }
+  .card-badge {
+    font-size: 6px;
+    background: rgba(200,24,26,0.2);
+    color: #FF8080;
+    border-radius: 4px;
+    padding: 2px 5px;
+    border: 1px solid rgba(200,24,26,0.3);
+  }
+
+  .phone-home { height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; width: 60px; margin: 8px auto 0; }
+
+  /* ─── FEATURES ───────────────────────────────────────────── */
+  .features-section {
+    position: relative;
+    z-index: 10;
+    padding: 80px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .feature-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .feature-card:hover {
+    background: rgba(200,24,26,0.05);
+    border-color: rgba(200,24,26,0.25);
+    transform: translateY(-4px);
+  }
+
+  .feature-card:hover::before { opacity: 1; }
+
+  .feat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(200,24,26,0.12);
+    border: 1px solid rgba(200,24,26,0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+
+  .feat-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: white;
+  }
+
+  .feat-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ─── CTA STRIP ──────────────────────────────────────────── */
+  .cta-strip {
+    position: relative;
+    z-index: 10;
+    margin: 20px 24px 80px;
+    border-radius: 24px;
+    padding: 60px 40px;
+    text-align: center;
+    background:
+      linear-gradient(135deg, rgba(140,0,0,0.5) 0%, rgba(30,0,0,0.8) 100%);
+    border: 1px solid rgba(200,24,26,0.3);
+    overflow: hidden;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,24,26,0.3), transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-title {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────────────── */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  footer a { color: var(--red); text-decoration: none; }
+  footer strong { color: white; }
+
+  /* ─── ANIMATIONS ─────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .download-buttons { flex-direction: column; align-items: center; }
+    .btn-download { width: 100%; max-width: 320px; justify-content: center; }
+    .stats-bar { flex-direction: column; max-width: 260px; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--white-border); }
+    .stat-item:last-child { border-bottom: none; }
+    .cta-strip { padding: 40px 24px; margin: 20px 16px 60px; }
+    .features-section { padding: 60px 16px; }
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { letter-spacing: -1px; }
+    .logo-text { font-size: 18px; }
+  }
+
+  /* Download trigger flash */
+  .flash-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 18px;
+    border: 2px solid var(--red);
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+  }
+
+  .btn-android:active .flash-ring { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ── MOUNTAIN + TEMPLE BACKGROUND SVG ─────────────────── -->
+<div class="bg-scene">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Sky -->
+    <rect width="1440" height="900" fill="#1A0000"/>
+
+    <!-- Distant peaks - farthest -->
+    <polygon points="0,600 120,300 280,520 400,200 560,480 700,150 860,420 1000,180 1160,440 1280,220 1440,500 1440,900 0,900" fill="#3A0808"/>
+
+    <!-- Mid mountains -->
+    <polygon points="0,700 100,400 200,580 350,280 500,540 650,300 800,500 950,260 1100,480 1250,320 1440,560 1440,900 0,900" fill="#2A0505"/>
+
+    <!-- Temple structure center-left -->
+    <g transform="translate(300,350)">
+      <!-- Temple base tiers -->
+      <rect x="-60" y="180" width="120" height="20" fill="#4A0A0A"/>
+      <rect x="-50" y="160" width="100" height="22" fill="#550C0C"/>
+      <rect x="-40" y="140" width="80" height="22" fill="#600E0E"/>
+      <!-- Temple body -->
+      <rect x="-30" y="80" width="60" height="62" fill="#4A0A0A"/>
+      <!-- Windows -->
+      <rect x="-22" y="95" width="12" height="16" fill="#2A0505"/>
+      <rect x="10" y="95" width="12" height="16" fill="#2A0505"/>
+      <!-- Temple spire tiers -->
+      <rect x="-25" y="60" width="50" height="22" fill="#550C0C"/>
+      <rect x="-18" y="42" width="36" height="20" fill="#600E0E"/>
+      <rect x="-12" y="26" width="24" height="18" fill="#6A1010"/>
+      <rect x="-7" y="14" width="14" height="14" fill="#740C0C"/>
+      <!-- Pinnacle -->
+      <polygon points="0,-5 -4,14 4,14" fill="#880808"/>
+      <!-- Decorative flag lines -->
+      <line x1="0" y1="-5" x2="-30" y2="-35" stroke="#8A0000" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="-5" x2="30" y2="-30" stroke="#8A0000" stroke-width="0.8" opacity="0.6"/>
+    </g>
+
+    <!-- Temple structure right side -->
+    <g transform="translate(1080,380)">
+      <rect x="-50" y="180" width="100" height="18" fill="#4A0A0A"/>
+      <rect x="-42" y="162" width="84" height="20" fill="#550C0C"/>
+      <rect x="-32" y="145" width="64" height="19" fill="#5A0D0D"/>
+      <rect x="-25" y="85" width="50" height="62" fill="#4A0A0A"/>
+      <rect x="-18" y="100" width="10" height="14" fill="#2A0505"/>
+      <rect x="8" y="100" width="10" height="14" fill="#2A0505"/>
+      <rect x="-22" y="66" width="44" height="21" fill="#550C0C"/>
+      <rect x="-15" y="50" width="30" height="18" fill="#600E0E"/>
+      <rect x="-9" y="36" width="18" height="16" fill="#6A1010"/>
+      <rect x="-5" y="24" width="10" height="13" fill="#740C0C"/>
+      <polygon points="0,-4 -3,11 3,11" fill="#880808"/>
+    </g>
+
+    <!-- Himalayan peak left - very tall -->
+    <polygon points="-50,900 200,120 260,280 310,150 370,320 420,900" fill="#1E0404"/>
+
+    <!-- Himalayan peak right -->
+    <polygon points="1100,900 1200,280 1260,380 1320,200 1380,350 1490,900" fill="#1E0404"/>
+
+    <!-- Snow caps -->
+    <polygon points="200,120 220,200 260,280 240,260 180,240" fill="#3D0A0A" opacity="0.8"/>
+    <polygon points="1200,280 1220,340 1260,380 1245,360 1185,330" fill="#3D0A0A" opacity="0.8"/>
+    <polygon points="700,150 720,220 760,270 740,250 680,230" fill="#3D0A0A" opacity="0.7"/>
+
+    <!-- Foreground hills -->
+    <path d="M0,800 Q200,680 400,750 Q600,820 800,700 Q1000,600 1200,720 Q1350,780 1440,750 L1440,900 L0,900 Z" fill="#150202"/>
+
+    <!-- Stars -->
+    <circle cx="100" cy="50" r="1.2" fill="#FF6666" opacity="0.6"/>
+    <circle cx="250" cy="30" r="0.8" fill="#FF8888" opacity="0.5"/>
+    <circle cx="450" cy="70" r="1.5" fill="#FFAAAA" opacity="0.4"/>
+    <circle cx="700" cy="20" r="1" fill="#FF9999" opacity="0.6"/>
+    <circle cx="900" cy="55" r="1.2" fill="#FF7777" opacity="0.5"/>
+    <circle cx="1100" cy="35" r="0.9" fill="#FFBBBB" opacity="0.4"/>
+    <circle cx="1320" cy="60" r="1.3" fill="#FF8888" opacity="0.6"/>
+    <circle cx="550" cy="45" r="0.7" fill="#FFCCCC" opacity="0.5"/>
+    <circle cx="1200" cy="80" r="1.1" fill="#FF6666" opacity="0.4"/>
+  </svg>
+</div>
+<div class="bg-overlay"></div>
+
+<!-- ── NAVIGATION ─────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="logo-mark">B</div>
+    <span class="logo-text">Biz<span>nity</span><span class="logo-dot">*</span></span>
+  </a>
+  <div class="nav-badge">📱 App Now Live</div>
+</nav>
+
+<!-- ── HERO SECTION ───────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-tag">
+    <span class="dot"></span>
+    Nepal's #1 Business Platform
+  </div>
+
+  <h1 class="hero-title">
+    <span class="white">Nepal ko Business,</span><br>
+    <span class="accent">Aaba Haatma!</span>
+  </h1>
+
+  <p class="hero-nepali">नेपालको उत्कृष्ट व्यापारहरू अब तपाईंको मोबाइलमा</p>
+
+  <p class="hero-sub">
+    Discover businesses, products, jobs &amp; events across all 77 districts of Nepal — now in your pocket.
+  </p>
+
+  <div class="download-section">
+    <p class="download-label">Download Free — Available Now</p>
+    <div class="download-buttons">
+      <!-- Android -->
+      <a class="btn-download btn-android" href="biznity.apk" download="biznity.apk" id="androidBtn">
+        <div class="flash-ring"></div>
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.523 15.3414C17.523 16.2083 16.8166 16.9147 15.9496 16.9147H8.0498C7.18283 16.9147 6.47648 16.2083 6.47648 15.3414V8.65869C6.47648 7.79172 7.18283 7.08533 8.0498 7.08533H15.9496C16.8166 7.08533 17.523 7.79172 17.523 8.65869V15.3414Z" fill="white" opacity="0.2"/>
+            <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM5.5 10H4V14H5.5V10ZM8 16.5C8 17.33 8.67 18 9.5 18H10V20.5C10 21.33 10.67 22 11.5 22C12.33 22 13 21.33 13 20.5V18H14.5C15.33 18 16 17.33 16 16.5V9H8V16.5ZM19.5 10H18V14H19.5V10ZM14.5 3.5L16 2L14.5 .5L13 2L14.5 3.5ZM9.5 3.5L11 2L9.5 .5L8 2L9.5 3.5Z"/>
+            <path d="M8.5 8L5.5 3M15.5 8L18.5 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="8.5" cy="2.5" r="1" fill="white"/>
+            <circle cx="15.5" cy="2.5" r="1" fill="white"/>
+            <rect x="8" y="8.5" width="8" height="8" rx="1" fill="white" opacity="0.9"/>
+            <rect x="10" y="6.5" width="1.5" height="3" rx="0.5" fill="white"/>
+            <rect x="12.5" y="6.5" width="1.5" height="3" rx="0.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="btn-text-group">
+          <span class="btn-small">Download for</span>
+          <span class="btn-big">Android APK</span>
+        </div>
+      </a>
+
+      <!-- iOS -->
+      <a class="btn-download btn-ios" href="biznityios.apk" download="biznityios.apk" id="iosBtn">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+          </svg>
+        </div>
+        <div class="btn-text-group">
+          <span class="btn-small">Download for</span>
+          <span class="btn-big">iPhone / iOS</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">14+</span>
+      <span class="stat-lbl">Businesses</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">77</span>
+      <span class="stat-lbl">Districts</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">Free</span>
+      <span class="stat-lbl">Always</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHONE PREVIEW ───────────────────────────────────────── -->
+<section class="phone-section">
+  <p class="section-label">Preview</p>
+  <h2 class="section-title">Built for Nepal, <span style="color:var(--red)">Beautifully</span></h2>
+  <p class="section-sub">Clean, fast, and powerful — made for every Nepali smartphone</p>
+
+  <div class="phone-mockup-wrap">
+    <div class="phone-glow"></div>
+    <div class="phone-frame">
+      <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+      <div class="phone-screen">
+        <!-- App header -->
+        <div class="app-header-mock">
+          <span class="app-logo-mock">Biz<span>nity</span> <span style="color:var(--red);font-size:11px">*</span></span>
+          <div style="width:24px;height:24px;background:rgba(200,24,26,0.2);border-radius:50%;border:1px solid rgba(200,24,26,0.4);"></div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="app-search-mock">
+          <div class="search-dot"></div>
+          <div class="search-line"></div>
+          <div style="width:14px;height:14px;background:var(--red);border-radius:4px;flex-shrink:0;"></div>
+        </div>
+
+        <!-- Category chips -->
+        <div class="app-cat-row">
+          <div class="cat-chip active">All</div>
+          <div class="cat-chip">Products</div>
+          <div class="cat-chip">Jobs</div>
+          <div class="cat-chip">Events</div>
+          <div class="cat-chip">Offers🔥</div>
+        </div>
+
+        <!-- Cards -->
+        <div class="app-card-mock">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#8B0000,#C8181A);"></div>
+          <div class="card-info">
+            <div class="card-name">Himalayan Restaurant</div>
+            <div class="card-cat">Food & Beverage · Pokhara</div>
+          </div>
+          <div class="card-badge">✓ Verified</div>
+        </div>
+        <div class="app-card-mock">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#1A1A2E,#4A0A0A);"></div>
+          <div class="card-info">
+            <div class="card-name">TechNepal Solutions</div>
+            <div class="card-cat">IT Services · Kathmandu</div>
+          </div>
+          <div class="card-badge">Featured</div>
+        </div>
+        <div class="app-card-mock">
+          <div class="card-thumb" style="background:linear-gradient(135deg,#0A3A0A,#1A5A0A);"></div>
+          <div class="card-info">
+            <div class="card-name">GreenMart Nepal</div>
+            <div class="card-cat">Retail · Butwal</div>
+          </div>
+          <div class="card-badge">New</div>
+        </div>
+
+        <div class="phone-home"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES SECTION ───────────────────────────────────── -->
+<section class="features-section">
+  <p class="section-label">Why Biznity App?</p>
+  <h2 class="section-title">Everything in <span style="color:var(--red)">One App</span></h2>
+  <p class="section-sub">Your all-in-one Nepal business companion</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon">🏢</div>
+      <div class="feat-title">Business Directory</div>
+      <div class="feat-desc">Find and connect with thousands of verified businesses across all 77 districts of Nepal.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🛍️</div>
+      <div class="feat-title">Products & Offers</div>
+      <div class="feat-desc">Browse products and exclusive deals from local businesses near you in real time.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">💼</div>
+      <div class="feat-title">Job Listings</div>
+      <div class="feat-desc">Discover job opportunities from businesses across Nepal — apply in seconds.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">📅</div>
+      <div class="feat-title">Events</div>
+      <div class="feat-desc">Stay updated with business events, expos, and local happenings around you.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">📍</div>
+      <div class="feat-title">All 77 Districts</div>
+      <div class="feat-desc">Full coverage of Nepal — from Taplejung to Darchula, every district is on Biznity.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">🆓</div>
+      <div class="feat-title">100% Free</div>
+      <div class="feat-desc">No subscription, no hidden fees. Biznity is and always will be free for users.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA STRIP ──────────────────────────────────────────── -->
+<section class="cta-strip">
+  <h2 class="cta-title">Ready to explore Nepal's best businesses?</h2>
+  <p class="cta-sub">Join thousands of Nepalis already discovering opportunities on Biznity</p>
+  <div class="download-buttons" style="justify-content:center;">
+    <a class="btn-download btn-android" href="biznity.apk" download="biznity.apk" style="min-width:180px;">
+      <div class="btn-text-group" style="text-align:center;width:100%;">
+        <span class="btn-small">Get the App</span>
+        <span class="btn-big">⬇ Download Android</span>
+      </div>
+    </a>
+    <a class="btn-download btn-ios" href="biznityios.apk" download="biznityios.apk" style="min-width:180px;">
+      <div class="btn-text-group" style="text-align:center;width:100%;">
+        <span class="btn-small">Get the App</span>
+        <span class="btn-big"> Download iPhone</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <p style="margin-bottom:8px;">
+    <strong>Biznity</strong> — Nepal's #1 Business Platform &nbsp;·&nbsp;
+    <a href="https://biznity.online">biznity.online</a>
+  </p>
+  <p>नेपालको व्यापार, एकै ठाउँमा &nbsp;·&nbsp; Made with ❤️ in Nepal</p>
+</footer>
+
+<script>
+  // Detect device and auto-highlight the right button
+  const ua = navigator.userAgent.toLowerCase();
+  const isIOS = /iphone|ipad|ipod/.test(ua);
+  const isAndroid = /android/.test(ua);
+
+  const androidBtn = document.getElementById('androidBtn');
+  const iosBtn = document.getElementById('iosBtn');
+
+  if (isIOS) {
+    iosBtn.style.background = 'linear-gradient(135deg, var(--red) 0%, #9B0000 100%)';
+    iosBtn.style.boxShadow = '0 8px 32px rgba(200,24,26,0.4)';
+    iosBtn.style.border = 'none';
+    androidBtn.style.background = 'rgba(255,255,255,0.06)';
+    androidBtn.style.boxShadow = 'none';
+    androidBtn.style.border = '1px solid rgba(255,255,255,0.18)';
+  }
+
+  // Add download tracking feedback
+  [androidBtn, iosBtn].forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const orig = this.querySelector('.btn-big').textContent;
+      this.querySelector('.btn-small').textContent = '✓ Starting download...';
+      setTimeout(() => {
+        this.querySelector('.btn-small').textContent = this === androidBtn ? 'Download for' : 'Download for';
+      }, 3000);
+    });
+  });
+
+  // Scroll reveal for feature cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = `fadeUp 0.5s ${i * 0.08}s ease both`;
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Biznity App Download</title>
